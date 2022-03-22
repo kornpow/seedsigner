@@ -16,7 +16,8 @@ class LogoView(View):
         # View.disp.Init()
         View.disp = disp
         dirname = os.path.dirname(__file__)
-        logo_url = os.path.join(dirname, "../../", "seedsigner", "resources", "logo_black_240.png")
+        # logo_url = os.path.join(dirname, "../../", "seedsigner", "resources", "logo_black_240.png")
+        logo_url = os.path.join("resources", "logo_black_240.png")
         self.logo = Image.open(logo_url)
         View.canvas_width = View.WIDTH
         View.canvas_height = View.HEIGHT

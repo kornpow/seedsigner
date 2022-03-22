@@ -19,6 +19,7 @@ class View:
     HEIGHT = 240
     
     font_path = os.path.join(pathlib.Path(__file__).parent.resolve(), "..", "resources", "fonts")
+    font_path = "resources/fonts"
     
     # Define necessary fonts
     ASSISTANT16 = ImageFont.truetype(os.path.join(font_path, 'Assistant-Medium.ttf'), 16)

@@ -36,7 +36,8 @@ class touchscreen(tk.Tk):
 
         # self.img_path = Path("/home/pi/seedsigner/src/seedsigner/resources")
 
-        self.img_path = Path("seedsigner/resources")
+        # self.img_path = Path("seedsigner/resources")
+        self.img_path = Path("resources/buttons")
 
 
     def Init(self):
@@ -58,14 +59,14 @@ class touchscreen(tk.Tk):
         self.style.theme_use("clam")
         self.style.configure('TButton', font=('Helvetica', 20))
 
-        self.btn_right = Image.open(self.img_path.joinpath("buttons/RR.png"))
-        self.btn_up = Image.open(self.img_path.joinpath("buttons/UP.png"))
-        self.btn_left = Image.open(self.img_path.joinpath("buttons/LL.png"))
-        self.btn_down = Image.open(self.img_path.joinpath("buttons/DOWN.png"))
-        self.btn_select = Image.open(self.img_path.joinpath("buttons/SELECT.png"))
-        self.btn_k1 = Image.open(self.img_path.joinpath("buttons/K1.png"))
-        self.btn_k2 = Image.open(self.img_path.joinpath("buttons/K2.png"))
-        self.btn_k3 = Image.open(self.img_path.joinpath("buttons/K3.png"))
+        self.btn_right = Image.open(self.img_path.joinpath("RR.png"))
+        self.btn_up = Image.open(self.img_path.joinpath("UP.png"))
+        self.btn_left = Image.open(self.img_path.joinpath("LL.png"))
+        self.btn_down = Image.open(self.img_path.joinpath("DOWN.png"))
+        self.btn_select = Image.open(self.img_path.joinpath("SELECT.png"))
+        self.btn_k1 = Image.open(self.img_path.joinpath("K1.png"))
+        self.btn_k2 = Image.open(self.img_path.joinpath("K2.png"))
+        self.btn_k3 = Image.open(self.img_path.joinpath("K3.png"))
 
         self.btn_right_tk = ImageTk.PhotoImage(self.btn_right)
         self.btn_up_tk = ImageTk.PhotoImage(self.btn_up)

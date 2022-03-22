@@ -27,10 +27,20 @@ mkvirtualenv seedsigner-gui
 
 ## Pip installs
 ```
-pip install -r requirements.txt
+pip install -r requirements-emulator.txt
 ```
 
+## Build the executable
+```
+cd src
+pyinstaller --onefile  --paths="/home/skorn/venvs/seedsigner_gui-2/lib/python3.8/site-packages/cv2/cv2.abi3.so" main.py
+```
 
+## Run executable
+```
+cd src/dist/main
+NOTAPI=true ./main
+```
 
 ## Run the emulator
 ```

@@ -1,6 +1,7 @@
 import configparser
 import sys
 import time
+import os
 
 import threading
 
@@ -9,6 +10,14 @@ from seedsigner.helpers import touchscreen
 
 config = configparser.ConfigParser()
 config.read("settings.ini")
+
+# Dont load RPi Deps
+os.environ["NOTAPI"] = "yes"
+
+import glob
+print(glob.glob("*"))
+import code
+code.interact(local=locals())
 
 # One-time setup to intialize the one and only Controller
 # Controller.configure_instance(config, disable_hardware=True)
