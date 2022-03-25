@@ -1,4 +1,4 @@
-from pathlib import Path
+import pathlib
 from time import sleep
 from threading import Thread
 import os
@@ -31,14 +31,15 @@ class touchscreen(tk.Tk):
         else:
             self.geometry("640x480")
         
-        self.myFont = font.Font(family='Helvetica', size=35, weight='bold')
-        self.myFont2 = font.Font(family='Helvetica', size=20, weight='bold')
+        # self.myFont = font.Font(family='Helvetica', size=35, weight='bold')
+        # self.myFont2 = font.Font(family='Helvetica', size=20, weight='bold')
 
         # self.img_path = Path("/home/pi/seedsigner/src/seedsigner/resources")
 
         # self.img_path = Path("seedsigner/resources")
-        self.img_path = Path("resources/buttons")
 
+        base_path = pathlib.Path(__file__).absolute().parent.parent
+        self.img_path = base_path.joinpath("resources/buttons")
 
     def Init(self):
         """Initialize display"""

@@ -22,6 +22,8 @@ from .models import (EncodeQRDensity, QRType, Seed, SeedStorage, Settings, Decod
 
 from seedsigner.helpers import touchscreen
 
+print("hello world")
+
 class Controller(Singleton):
     """
         The Controller is a globally available singleton that maintains SeedSigner state.

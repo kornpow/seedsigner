@@ -1,6 +1,7 @@
 import os
 import random
 import time
+import pathlib
 
 from PIL import Image, ImageDraw
 
@@ -17,7 +18,9 @@ class LogoView(View):
         View.disp = disp
         dirname = os.path.dirname(__file__)
         # logo_url = os.path.join(dirname, "../../", "seedsigner", "resources", "logo_black_240.png")
-        logo_url = os.path.join("resources", "logo_black_240.png")
+        base_path = pathlib.Path(__file__).absolute().parent.parent
+        logo_url = base_path.joinpath("resources/logo_black_240.png")
+        # logo_url = os.path.join("resources", "logo_black_240.png")
         self.logo = Image.open(logo_url)
         View.canvas_width = View.WIDTH
         View.canvas_height = View.HEIGHT

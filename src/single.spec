@@ -4,7 +4,10 @@
 block_cipher = None
 
 data_files = [
-    ("seedsigner/resources/*", ".")
+    ("seedsigner/resources/fonts", "resources/fonts"),
+    ("seedsigner/resources/buttons", "resources/buttons"),
+    ("seedsigner/resources/*.png", "resources"),
+    ("settings.ini", "."),    
 ]
 
 a = Analysis(['main.py'],
@@ -29,7 +32,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,  
           [],
-          name='main',
+          name='seedsigner',
           debug=True,
           bootloader_ignore_signals=False,
           strip=False,
