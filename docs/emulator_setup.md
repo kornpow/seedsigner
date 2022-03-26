@@ -63,16 +63,36 @@ https://github.com/AppImage/AppImageKit/wiki/Bundling-Python-apps
 https://github.com/niess/python-appimage/blob/master/docs/src/apps.md
 
 TODO:
-Download Base App Image
+Setup Base App Image
 ```bash
     wget https://github.com/niess/python-appimage/releases/download/python3.8/python3.8.13-cp38-cp38-manylinux1_x86_64.AppImage
     chmod +x python3.8.13-cp38-cp38-manylinux1_x86_64.AppImage
     ln -s python3.8.13-cp38-cp38-manylinux1_x86_64.AppImage app38
+
+    ./python3.8.13-cp38-cp38-manylinux1_x86_64.AppImage --appimage-extract
+    mv squashfs-root python3.8.13-cp38-cp38-manylinux1_x86_64.AppDir
+
+
+    # repackage
+
+
 ```
 Download all deps locally
  - https://stackoverflow.com/questions/7225900/how-can-i-install-packages-using-pip-according-to-the-requirements-txt-file-from
  - pip install git+file:///path/to/your/git/repo
 Successful install in appimage
+
+```
+    ./AppRun -sE -m pip install -r ../../../seedsigner/requirements.txt
+    cp -r ../../../seedsigner/src opt/src
+```
+
+Repackage to a AppImage
+```bash
+    wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+    chmod +x appimagetool-x86_64.AppImage
+    ./appimagetool-x86_64.AppImage python3.8.13-cp38-cp38-manylinux1_x86_64.AppDir seedsigner.AppImage
+```
 
 ## Run the emulator
 ```

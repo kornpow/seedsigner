@@ -56,9 +56,9 @@ class touchscreen(tk.Tk):
             "KEY3": True
         }
 
-        self.style = ttk.Style()
-        self.style.theme_use("clam")
-        self.style.configure('TButton', font=('Helvetica', 20))
+        # self.style = ttk.Style()
+        # self.style.theme_use("clam")
+        # self.style.configure('TButton', font=('Helvetica', 20))
 
         self.btn_right = Image.open(self.img_path.joinpath("RR.png"))
         self.btn_up = Image.open(self.img_path.joinpath("UP.png"))

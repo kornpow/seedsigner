@@ -3,6 +3,7 @@ from .qr_type import QRType
 from .encode_qr_density import EncodeQRDensity
 
 import configparser
+import pathlib
 from embit import bip39
 
 class Settings(Singleton):
@@ -36,7 +37,10 @@ class Settings(Singleton):
                 'qr_density': EncodeQRDensity.MEDIUM,
                 'custom_derivation': 'm/0/0',
                 'compact_seedqr_enabled': False,
-            }
+            },
+            # 'external': {
+            #     'io_dir': pathlib.Path.home()
+            # }
         }
 
         settings.init_complete = False
@@ -60,6 +64,7 @@ class Settings(Singleton):
         self.software = config["wallet"]["software"]
         self.qr_density = int(config["wallet"]["qr_density"])
         self.custom_derivation = config["wallet"]["custom_derivation"]
+        self.io_dir = pathlib.Path.home()
 
         if "compact_seedqr_enabled"in config["wallet"]:
             self.compact_seedqr_enabled = config.getboolean("wallet", "compact_seedqr_enabled")

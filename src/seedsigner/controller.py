@@ -562,7 +562,7 @@ class Controller(Singleton):
         xpub = xprv.to_public()
         xpub_base58 = xpub.to_string(version=version)
 
-        with open(f"/home/skorn/Desktop/xpub-{fingerprint}.txt", "w") as f:
+        with open(f"{self.settings.io_dir}/xpub-{fingerprint}.txt", "w") as f:
             f.write(xpub_base58)
             f.write("\n")
             f.write(derivation)
@@ -612,7 +612,7 @@ class Controller(Singleton):
         used_saved_seed = False
 
         base_path = Pathlib("/home/skorn/Desktop/psbt/")
-        psbt_names = [p.name for p in list(base_path.rglob("*.psbt")) ]
+        psbt_names = [p.name for p in list(export_dir.rglob("*.psbt")) ]
 
         psbt_names.append("... [ Return to Main ]")
 
@@ -623,7 +623,7 @@ class Controller(Singleton):
             return Path.MAIN_MENU
         else:
             psbt_filename = psbt_names[r-1]
-            with open(base_path.joinpath(psbt_filename),'r') as f:
+            with open(self.settings.io_dir.joinpath(psbt_filename),'r') as f:
                 psbtdata = f.read()
 
             decoder = DecodeQR(wordlist=self.settings.wordlist)
@@ -733,7 +733,7 @@ class Controller(Singleton):
             # TODO: handle multisig case. Increment filename smarter
             signed_filename = f"{psbt_filename}.signed"
             
-            with open(base_path.joinpath(signed_filename), "wb") as f:
+            with open(self.settings.io_dir.joinpath(signed_filename), "wb") as f:
                 f.write(trimmed_psbt.serialize())
 
             self.menu_view.draw_modal(["PSBT Signed", f"Saved to Filename: {signed_filename}"], "", "Right to Continue")
@@ -1152,8 +1152,7 @@ class Controller(Singleton):
             if input == B.KEY_LEFT:
                 return Path.MAIN_MENU
 
-
-        with open(f"/home/skorn/Desktop/txn-{datetime.utcnow().replace(microsecond=0).isoformat()}-signed.psbt", "wb") as f:
+        with open(f"{self.settings.io_dir}/txn-{datetime.utcnow().replace(microsecond=0).isoformat()}-signed.psbt", "wb") as f:
             f.write(trimmed_psbt.serialize())
 
 
